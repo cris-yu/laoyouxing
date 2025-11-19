@@ -1,0 +1,20 @@
+<view class="contact-edit-page">
+  <view class="form">
+    <view class="form-item">
+      <text class="label">姓名</text>
+      <input class="input" placeholder="请输入姓名" value="{{name}}" bindinput="onNameInput" />
+    </view>
+    
+    <view class="form-item">
+      <text class="label">关系</text>
+      <input class="input" placeholder="如：儿子、女儿" value="{{relation}}" bindinput="onRelationInput" />
+    </view>
+    
+    <view class="form-item">
+      <text class="label">电话</text>
+      <input class="input" type="number" placeholder="请输入手机号" value="{{phone}}" bindinput="onPhoneInput" />
+    </view>
+    
+    <button class="save-btn" bindtap="onSave">保存</button>
+  </view>
+</view>

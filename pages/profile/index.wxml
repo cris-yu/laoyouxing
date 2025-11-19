@@ -1,0 +1,68 @@
+<view class="profile-page">
+  <!-- 用户信息 -->
+  <view class="user-section">
+    <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
+    <text class="nickname">{{userInfo.nickname}}</text>
+  </view>
+
+  <!-- 紧急联系人 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">紧急联系人</text>
+      <button class="add-btn" bindtap="goToAddContact">+ 添加</button>
+    </view>
+    
+    <view class="contact-list" wx:if="{{emergencyContacts.length > 0}}">
+      <view class="contact-item" wx:for="{{emergencyContacts}}" wx:key="index">
+        <view class="contact-info">
+          <text class="contact-name">{{item.name}}</text>
+          <text class="contact-relation">{{item.relation}}</text>
+          <text class="contact-phone">{{item.phone}}</text>
+        </view>
+        <view class="contact-actions">
+          <button class="action-btn edit" bindtap="editContact" data-index="{{index}}">编辑</button>
+          <button class="action-btn delete" bindtap="deleteContact" data-index="{{index}}">删除</button>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-hint" wx:else>
+      <text>暂无紧急联系人</text>
+    </view>
+  </view>
+
+  <!-- 常用出发地 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">常用出发地</text>
+      <button class="add-btn" bindtap="setCities">+ 添加</button>
+    </view>
+    
+    <view class="city-list" wx:if="{{favoriteCities.length > 0}}">
+      <view class="city-tag" wx:for="{{favoriteCities}}" wx:key="index">
+        <text>{{item}}</text>
+        <text class="delete-icon" bindtap="deleteCity" data-index="{{index}}">×</text>
+      </view>
+    </view>
+    
+    <view class="empty-hint" wx:else>
+      <text>暂无常用出发地</text>
+    </view>
+  </view>
+
+  <!-- 其他选项 -->
+  <view class="section">
+    <view class="menu-item" bindtap="goToAbout">
+      <text class="menu-text">关于我们</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goToAgreement">
+      <text class="menu-text">用户协议</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="goToPrivacy">
+      <text class="menu-text">隐私政策</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+</view>
