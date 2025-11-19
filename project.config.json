@@ -22,7 +22,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "useCompilerPlugins": false,
+    "useCompilerPlugins": ["typescript"],
     "compileWorklet": false,
     "uglifyFileName": false,
     "uploadWithSourceMap": true,
@@ -31,9 +31,7 @@
     "minifyWXML": true,
     "localPlugins": false,
     "disableUseStrict": false,
-    "condition": false,
-    "swc": false,
-    "disableSWC": true
+    "condition": false
   },
   "compileType": "miniprogram",
   "libVersion": "3.0.0",
