@@ -1,0 +1,252 @@
+.traveler-home {
+  min-height: 100vh;
+  padding-bottom: 160rpx;
+  background: linear-gradient(180deg, #E7F7E8 0%, #f5f5f5 400rpx);
+}
+
+.welcome-header {
+  padding: 60rpx 40rpx 40rpx;
+  text-align: center;
+}
+
+.welcome-text {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.trip-name {
+  display: block;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.today-card {
+  margin: 0 40rpx 40rpx;
+  font-size: 36rpx;
+}
+
+.card-header {
+  margin-bottom: 30rpx;
+}
+
+.card-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.today-date {
+  display: block;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.gather-info {
+  margin-bottom: 30rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 32rpx;
+}
+
+.info-label {
+  color: #666;
+  margin-right: 16rpx;
+}
+
+.info-value {
+  flex: 1;
+  color: #333;
+  font-weight: 500;
+}
+
+.phone {
+  color: #1AAD19;
+}
+
+.btn-call {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 24rpx;
+  background: #E7F7E8;
+  color: #1AAD19;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  border: none;
+  outline: none;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 28rpx;
+  top: 20rpx;
+  bottom: 20rpx;
+  width: 4rpx;
+  background: #e5e5e5;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 100rpx;
+  margin-bottom: 50rpx;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 16rpx;
+  top: 8rpx;
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  background: #e5e5e5;
+  border: 4rpx solid #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item.active .timeline-dot {
+  background: #1AAD19;
+}
+
+.timeline-content {
+  padding: 20rpx;
+  background: #f9f9f9;
+  border-radius: 16rpx;
+}
+
+.timeline-item.active .timeline-content {
+  background: #FFF7E6;
+  border: 2rpx solid #FA8C16;
+}
+
+.timeline-time {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 12rpx;
+}
+
+.timeline-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.timeline-desc {
+  font-size: 30rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 16rpx;
+}
+
+.btn-audio {
+  padding: 20rpx 32rpx;
+  font-size: 32rpx;
+  border-radius: 12rpx;
+}
+
+.empty-timeline {
+  text-align: center;
+  padding: 80rpx 40rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 30rpx;
+  padding: 0 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.action-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.action-icon {
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.action-text {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.help-button {
+  position: fixed;
+  bottom: 40rpx;
+  left: 40rpx;
+  right: 40rpx;
+  padding: 40rpx;
+  background: #E64340;
+  color: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(230, 67, 64, 0.4);
+  z-index: 100;
+}
+
+.help-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 适老化：大字体模式 */
+page.large-font .welcome-text {
+  font-size: 56rpx;
+}
+
+page.large-font .card-title,
+page.large-font .timeline-title {
+  font-size: 44rpx;
+}
+
+page.large-font .info-row,
+page.large-font .timeline-desc {
+  font-size: 36rpx;
+}
+
+/* 适老化：超大字体模式 */
+page.extra-large-font .welcome-text {
+  font-size: 64rpx;
+}
+
+page.extra-large-font .card-title,
+page.extra-large-font .timeline-title {
+  font-size: 48rpx;
+}
+
+page.extra-large-font .info-row,
+page.extra-large-font .timeline-desc {
+  font-size: 40rpx;
+}

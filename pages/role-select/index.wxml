@@ -1,0 +1,25 @@
+<view class="role-select-container">
+  <view class="header">
+    <image class="logo" src="/assets/images/logo.png" mode="aspectFit"></image>
+    <text class="title">老友行</text>
+    <text class="subtitle">给爸妈的AI旅伴</text>
+  </view>
+
+  <view class="role-buttons">
+    <view class="role-card" bindtap="selectRole" data-role="child">
+      <view class="role-icon">👨‍👩‍👧‍👦</view>
+      <text class="role-title">我是子女</text>
+      <text class="role-desc">帮家人订行程</text>
+    </view>
+
+    <view class="role-card" bindtap="selectRole" data-role="traveler">
+      <view class="role-icon">🧳</view>
+      <text class="role-title">我是出行人</text>
+      <text class="role-desc">自己出行/查看行程</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="tips">选择您的角色以继续</text>
+  </view>
+</view>

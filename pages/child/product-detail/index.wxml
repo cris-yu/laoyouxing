@@ -1,0 +1,123 @@
+<scroll-view scroll-y class="product-detail">
+  <!-- 封面图 -->
+  <image class="cover-image" src="{{product.coverImage}}" mode="aspectFill"></image>
+
+  <!-- 基本信息 -->
+  <view class="product-header card">
+    <text class="product-name">{{product.name}}</text>
+    <view class="product-tags">
+      <text class="tag tag-primary" wx:for="{{product.tags}}" wx:key="index">{{item}}</text>
+    </view>
+    <view class="product-meta">
+      <text class="meta-item">{{product.days}}天</text>
+      <text class="meta-divider">|</text>
+      <text class="meta-item">{{product.departureCity}} - {{product.destinationCity}}</text>
+    </view>
+    <view class="price-info">
+      <view class="price">
+        <text class="price-label">起价</text>
+        <text class="price-value">¥{{product.priceFrom}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 适老化标签 -->
+  <view class="elderly-info card">
+    <view class="section-title">适老化信息</view>
+    <view class="info-item">
+      <text class="info-label">适合年龄：</text>
+      <text class="info-value">{{product.ageRange}}岁</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">行程强度：</text>
+      <text class="info-value">{{product.intensity === 'low' ? '轻松' : product.intensity === 'medium' ? '适中' : '较高'}}</text>
+      <text class="info-desc">（{{product.intensityDescription}}）</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">医疗配置：</text>
+      <text class="info-value">{{product.medicalLevel === 'near_clinic' ? '临近诊所' : product.medicalLevel === 'near_hospital' ? '临近医院' : '基础配置'}}</text>
+      <text class="info-desc">（{{product.medicalDescription}}）</text>
+    </view>
+    <view class="info-item">
+      <text class="info-label">最长车程：</text>
+      <text class="info-value">{{product.maxSingleRideHours}}小时</text>
+    </view>
+  </view>
+
+  <!-- 行程安排 -->
+  <view class="itinerary card">
+    <view class="section-title">行程安排</view>
+    <view class="day-item" wx:for="{{product.itinerary}}" wx:key="dayIndex">
+      <view class="day-header">
+        <text class="day-number">第{{item.dayIndex}}天</text>
+        <text class="day-title">{{item.title}}</text>
+      </view>
+      <view class="segment-item" wx:for="{{item.schedule}}" wx:key="id" wx:for-item="segment">
+        <view class="segment-time">{{segment.time}}</view>
+        <view class="segment-content">
+          <text class="segment-title">{{segment.title}}</text>
+          <text class="segment-desc">{{segment.description}}</text>
+          <text class="segment-tag" wx:if="{{segment.hasAudioGuide}}">🎧 有讲解</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 费用说明 -->
+  <view class="费用-info card">
+    <view class="section-title">费用说明</view>
+    <view class="fee-section">
+      <text class="fee-label">费用包含：</text>
+      <view class="fee-list">
+        <text class="fee-item" wx:for="{{product.included}}" wx:key="index">• {{item}}</text>
+      </view>
+    </view>
+    <view class="fee-section">
+      <text class="fee-label">费用不含：</text>
+      <view class="fee-list">
+        <text class="fee-item" wx:for="{{product.excluded}}" wx:key="index">• {{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- AI 行程顾问 -->
+  <view class="ai-advisor card" wx:if="{{hasFamily}}">
+    <view class="section-title">🤖 AI 行程顾问</view>
+    <text class="advisor-desc">让 AI 评估这条线路是否适合您的家人</text>
+    <button class="btn btn-secondary" bindtap="askAI">问问 AI 是否适合我爸妈</button>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="price-summary">
+      <text class="price-label">起</text>
+      <text class="price-value">¥{{product.priceFrom}}</text>
+    </view>
+    <button class="btn btn-primary btn-book" bindtap="goToConfirm">立即预订</button>
+  </view>
+</scroll-view>
+
+<!-- AI 建议弹窗 -->
+<view class="modal-overlay" wx:if="{{showAIModal}}" bindtap="closeAIModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">AI 适配建议</text>
+      <icon type="cancel" size="20" bindtap="closeAIModal"></icon>
+    </view>
+    <view class="modal-body">
+      <view class="ai-result">
+        <text class="ai-headline">{{aiResult.headline}}</text>
+        <view class="ai-details">
+          <text class="ai-detail-item" wx:for="{{aiResult.details}}" wx:key="index">• {{item}}</text>
+        </view>
+        <view class="ai-advice">
+          <text class="advice-label">建议：</text>
+          <text class="advice-text">{{aiResult.adviceForChild}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="btn btn-primary" bindtap="closeAIModal">知道了</button>
+    </view>
+  </view>
+</view>

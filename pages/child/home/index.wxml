@@ -1,0 +1,69 @@
+<view class="child-home">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <icon type="search" size="16" color="#999"></icon>
+      <input placeholder="搜索目的地" placeholder-class="search-placeholder" />
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <picker mode="selector" range="{{departureCities}}" bindchange="onDepartureCityChange">
+      <view class="filter-item">
+        <text>{{selectedCity || '出发城市'}}</text>
+        <icon type="success" size="12" wx:if="{{selectedCity}}"></icon>
+      </view>
+    </picker>
+    <picker mode="date" bindchange="onDateChange">
+      <view class="filter-item">
+        <text>{{selectedDate || '出发日期'}}</text>
+        <icon type="success" size="12" wx:if="{{selectedDate}}"></icon>
+      </view>
+    </picker>
+    <picker mode="selector" range-key="label" range="{{intensityOptions}}" bindchange="onIntensityChange">
+      <view class="filter-item">
+        <text>{{selectedIntensityText || '行程强度'}}</text>
+        <icon type="success" size="12" wx:if="{{selectedIntensity}}"></icon>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 产品列表 -->
+  <scroll-view scroll-y class="product-list" refresher-enabled="{{true}}" refresher-triggered="{{refreshing}}" bindrefresherrefresh="onRefresh">
+    <view class="product-card" wx:for="{{products}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="product-cover" src="{{item.coverImage}}" mode="aspectFill"></image>
+      <view class="product-info">
+        <text class="product-name">{{item.name}}</text>
+        <view class="product-tags">
+          <text class="tag tag-primary" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        <view class="product-meta">
+          <text class="meta-item">{{item.days}}天</text>
+          <text class="meta-item">{{item.departureCity}} - {{item.destinationCity}}</text>
+        </view>
+        <view class="product-footer">
+          <view class="price">
+            <text class="price-label">起</text>
+            <text class="price-value">¥{{item.priceFrom}}</text>
+          </view>
+          <view class="suitable-tag">
+            <text class="suitable-text">适老化</text>
+            <text class="intensity-badge">{{item.intensity === 'low' ? '轻松' : item.intensity === 'medium' ? '适中' : '较高'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{!loading && products.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无合适的线路</text>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,79 @@
+<scroll-view scroll-y class="traveler-home">
+  <!-- 顶部欢迎信息 -->
+  <view class="welcome-header">
+    <text class="welcome-text">您好，{{travelerName}}</text>
+    <text class="trip-name">{{tripInfo.productName}}</text>
+  </view>
+
+  <!-- 今日行程卡片 -->
+  <view class="today-card card">
+    <view class="card-header">
+      <text class="card-title">📅 今日行程</text>
+      <text class="today-date">{{tripInfo.todayTitle}}</text>
+    </view>
+
+    <!-- 集合信息 -->
+    <view class="gather-info" wx:if="{{tripInfo.guide}}">
+      <view class="info-row">
+        <text class="info-label">导游：</text>
+        <text class="info-value">{{tripInfo.guide.name}}</text>
+        <button class="btn-call" bindtap="callGuide">
+          <icon type="success" size="14" color="#1AAD19"></icon>
+          <text>联系导游</text>
+        </button>
+      </view>
+      <view class="info-row">
+        <text class="info-label">导游电话：</text>
+        <text class="info-value phone">{{tripInfo.guide.phone}}</text>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <!-- 今日时间轴 -->
+    <view class="timeline">
+      <view 
+        class="timeline-item {{index === currentSegmentIndex ? 'active' : ''}}" 
+        wx:for="{{tripInfo.todaySegments}}" 
+        wx:key="id"
+      >
+        <view class="timeline-dot"></view>
+        <view class="timeline-content">
+          <view class="timeline-time">{{item.time}}</view>
+          <view class="timeline-title">{{item.title}}</view>
+          <view class="timeline-desc">{{item.description}}</view>
+          <button 
+            class="btn btn-primary btn-audio" 
+            wx:if="{{item.hasAudioGuide}}" 
+            bindtap="playAudioGuide" 
+            data-id="{{item.id}}"
+          >
+            🎧 听讲解
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-timeline" wx:if="{{tripInfo.todaySegments && tripInfo.todaySegments.length === 0}}">
+      <text class="empty-text">今日暂无行程安排</text>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToAICompanion">
+      <view class="action-icon">🤖</view>
+      <text class="action-text">AI 旅伴</text>
+    </view>
+    <view class="action-item" bindtap="goToSettings">
+      <view class="action-icon">⚙️</view>
+      <text class="action-text">设置</text>
+    </view>
+  </view>
+
+  <!-- 底部求助按钮 -->
+  <view class="help-button" bindtap="requestHelp">
+    <text class="help-text">🆘 我需要帮助</text>
+  </view>
+</scroll-view>

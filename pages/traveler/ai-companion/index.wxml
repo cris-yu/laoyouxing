@@ -1,0 +1,66 @@
+<view class="ai-companion">
+  <!-- 对话历史 -->
+  <scroll-view scroll-y scroll-into-view="msg-{{messages.length - 1}}" class="messages-container">
+    <view class="message-item {{item.type}}" wx:for="{{messages}}" wx:key="id" id="msg-{{index}}">
+      <view class="avatar">
+        <text class="avatar-text">{{item.type === 'user' ? '我' : 'AI'}}</text>
+      </view>
+      <view class="message-content">
+        <text class="message-text">{{item.content}}</text>
+        <text class="message-time">{{item.time}}</text>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-messages" wx:if="{{messages.length === 0}}">
+      <text class="empty-icon">🤖</text>
+      <text class="empty-text">您好！我是您的AI旅伴</text>
+      <text class="empty-desc">有什么可以帮您的吗？</text>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入区 -->
+  <view class="input-bar">
+    <view class="quick-questions" wx:if="{{showQuickQuestions}}">
+      <text class="quick-title">常见问题：</text>
+      <view class="quick-btns">
+        <button class="quick-btn" wx:for="{{quickQuestions}}" wx:key="index" bindtap="askQuickQuestion" data-text="{{item}}">
+          {{item}}
+        </button>
+      </view>
+    </view>
+
+    <view class="input-row">
+      <input 
+        class="text-input" 
+        placeholder="输入您的问题..." 
+        placeholder-class="input-placeholder"
+        value="{{inputText}}"
+        bindinput="onInput"
+        confirm-type="send"
+        bindconfirm="sendMessage"
+      />
+      <button class="btn-send" bindtap="sendMessage" disabled="{{!inputText}}">
+        发送
+      </button>
+      <button 
+        class="btn-voice {{recording ? 'recording' : ''}}" 
+        bindtouchstart="startRecord" 
+        bindtouchend="stopRecord"
+        bindtouchcancel="cancelRecord"
+      >
+        {{recording ? '松开发送' : '🎤 语音'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 语音提示 -->
+  <view class="voice-tip" wx:if="{{recording}}">
+    <view class="recording-animation">
+      <view class="wave"></view>
+      <view class="wave"></view>
+      <view class="wave"></view>
+    </view>
+    <text class="tip-text">正在录音...</text>
+  </view>
+</view>

@@ -1,0 +1,309 @@
+.product-detail {
+  height: 100vh;
+  padding-bottom: 120rpx;
+  background: #f5f5f5;
+}
+
+.cover-image {
+  width: 100%;
+  height: 400rpx;
+}
+
+.product-header {
+  margin: 20rpx;
+}
+
+.product-name {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.meta-divider {
+  color: #ddd;
+}
+
+.price-info {
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+}
+
+.price-label {
+  font-size: 24rpx;
+  color: #E64340;
+  margin-right: 8rpx;
+}
+
+.price-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #E64340;
+}
+
+.elderly-info,
+.itinerary,
+.费用-info,
+.ai-advisor {
+  margin: 0 20rpx 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+}
+
+.info-label {
+  color: #666;
+  margin-right: 8rpx;
+}
+
+.info-value {
+  color: #333;
+  font-weight: 500;
+}
+
+.info-desc {
+  color: #999;
+  font-size: 24rpx;
+  margin-left: 8rpx;
+}
+
+.day-item {
+  margin-bottom: 30rpx;
+}
+
+.day-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.day-number {
+  padding: 6rpx 16rpx;
+  background: #1AAD19;
+  color: #fff;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+.day-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.segment-item {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+}
+
+.segment-time {
+  flex-shrink: 0;
+  width: 140rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.segment-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.segment-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.segment-desc {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.segment-tag {
+  display: inline-block;
+  padding: 4rpx 12rpx;
+  background: #E6F7FF;
+  color: #1890FF;
+  border-radius: 4rpx;
+  font-size: 22rpx;
+}
+
+.fee-section {
+  margin-bottom: 20rpx;
+}
+
+.fee-label {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.fee-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.fee-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.advisor-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.price-summary {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+}
+
+.btn-book {
+  width: 240rpx;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 640rpx;
+  max-height: 80vh;
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-body {
+  padding: 24rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.ai-headline {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.ai-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.ai-detail-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.ai-advice {
+  padding: 16rpx;
+  background: #FFF7E6;
+  border-radius: 8rpx;
+}
+
+.advice-label {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #FA8C16;
+  margin-right: 8rpx;
+}
+
+.advice-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.modal-footer {
+  padding: 20rpx 24rpx;
+  border-top: 1rpx solid #eee;
+}
