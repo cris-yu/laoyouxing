@@ -1,0 +1,43 @@
+<view class="trip-page">
+  <view class="page-header">
+    <text class="page-title">我的行程</text>
+  </view>
+
+  <view class="trip-list">
+    <view class="trip-card" wx:for="{{trips}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="trip-header">
+        <view class="trip-name">{{item.routeName}}</view>
+        <view class="trip-status status-{{item.status}}">{{item.statusText}}</view>
+      </view>
+      
+      <view class="trip-info">
+        <view class="info-row">
+          <text class="info-label">出发日期</text>
+          <text class="info-value">{{item.departureDate}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">返回日期</text>
+          <text class="info-value">{{item.returnDate}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">导游</text>
+          <text class="info-value">{{item.guideName}} {{item.guidePhone}}</text>
+        </view>
+      </view>
+      
+      <view class="trip-footer">
+        <text class="view-detail">查看详情 ›</text>
+      </view>
+    </view>
+
+    <view class="loading-tip" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+
+    <view class="empty-tip" wx:if="{{!loading && trips.length === 0}}">
+      <text class="empty-icon">📅</text>
+      <text class="empty-text">暂无行程安排</text>
+      <text class="empty-hint">去首页看看精选线路吧</text>
+    </view>
+  </view>
+</view>

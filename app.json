@@ -1,17 +1,11 @@
 {
   "pages": [
-    "pages/role-select/index",
-    "pages/child/home/index",
-    "pages/child/product-detail/index",
-    "pages/child/order-confirm/index",
-    "pages/child/orders/index",
-    "pages/child/order-detail/index",
-    "pages/child/family/index",
-    "pages/child/family-edit/index",
-    "pages/child/profile/index",
-    "pages/traveler/home/index",
-    "pages/traveler/ai-companion/index",
-    "pages/traveler/settings/index"
+    "pages/home/index",
+    "pages/trip/index",
+    "pages/profile/index",
+    "pages/route-detail/index",
+    "pages/trip-detail/index",
+    "pages/contact-edit/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,6 +14,32 @@
     "navigationBarTextStyle": "black"
   },
 
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#1AAD19",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/trip/index",
+        "text": "行程",
+        "iconPath": "assets/icons/trip.png",
+        "selectedIconPath": "assets/icons/trip-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于行程导航和求助功能"

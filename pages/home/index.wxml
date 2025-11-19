@@ -1,0 +1,95 @@
+<view class="home-page">
+  <!-- 标题区域 -->
+  <view class="page-header">
+    <text class="page-title">精选线路</text>
+    <text class="page-subtitle">适合中老年人的品质旅游</text>
+  </view>
+
+  <!-- 筛选区域 -->
+  <view class="filter-bar">
+    <view class="filter-item">
+      <text class="filter-label">出发地</text>
+      <picker mode="selector" range="{{departureCities}}" value="{{selectedCityIndex}}" bindchange="onCityChange">
+        <view class="picker-box">
+          <text class="picker-text">{{departureCities[selectedCityIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="filter-item">
+      <text class="filter-label">天数</text>
+      <picker mode="selector" range="{{dayOptions}}" value="{{selectedDayIndex}}" bindchange="onDayChange">
+        <view class="picker-box">
+          <text class="picker-text">{{dayOptions[selectedDayIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="filter-item">
+      <text class="filter-label">价格</text>
+      <picker mode="selector" range="{{priceRanges}}" value="{{selectedPriceIndex}}" bindchange="onPriceChange">
+        <view class="picker-box">
+          <text class="picker-text">{{priceRanges[selectedPriceIndex]}}</text>
+          <text class="picker-arrow">▼</text>
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 线路列表 -->
+  <view class="route-list">
+    <view class="route-card" wx:for="{{routes}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="route-image" src="{{item.coverImage}}" mode="aspectFill" />
+      
+      <view class="route-info">
+        <view class="route-name">{{item.name}}</view>
+        
+        <view class="route-meta">
+          <text class="meta-item">{{item.departureCity}} → {{item.destinationCity}}</text>
+          <text class="meta-item">{{item.days}}天</text>
+        </view>
+        
+        <view class="route-tags">
+          <text class="tag" wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag">{{tag}}</text>
+        </view>
+        
+        <view class="route-features">
+          <view class="feature-item">
+            <text class="feature-label">适合年龄</text>
+            <text class="feature-value">{{item.ageRange}}</text>
+          </view>
+          <view class="feature-item">
+            <text class="feature-label">强度级别</text>
+            <text class="feature-value intensity-{{item.intensity}}">{{item.intensityText}}</text>
+          </view>
+          <view class="feature-item">
+            <text class="feature-label">购物安排</text>
+            <text class="feature-value">{{item.shoppingText}}</text>
+          </view>
+        </view>
+        
+        <view class="route-footer">
+          <view class="price-box">
+            <text class="price-label">起</text>
+            <text class="price-value">¥{{item.priceFrom}}</text>
+          </view>
+          <view class="view-detail-btn">查看详情 ›</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-tip" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-tip" wx:if="{{!loading && routes.length === 0}}">
+      <text class="empty-icon">📭</text>
+      <text class="empty-text">暂无符合条件的线路</text>
+      <text class="empty-hint">试试调整筛选条件</text>
+    </view>
+  </view>
+</view>
