@@ -1,3 +1,5 @@
+const { products, getProducts } = require('../../../data/products.js');
+
 Page({
   data: {
     products: [],
@@ -20,7 +22,27 @@ Page({
   },
 
   loadProducts() {
-    console.log('加载产品列表');
+    this.setData({ loading: true });
+    
+    // 使用筛选条件
+    const filters = {};
+    
+    if (this.data.selectedCity) {
+      filters.departureCity = this.data.selectedCity;
+    }
+    
+    if (this.data.selectedIntensity) {
+      filters.intensity = this.data.selectedIntensity;
+    }
+    
+    // 获取过滤后的产品列表
+    const filteredProducts = getProducts(filters);
+    
+    this.setData({
+      products: filteredProducts,
+      loading: false,
+      refreshing: false,
+    });
   },
 
   onRefresh() {
