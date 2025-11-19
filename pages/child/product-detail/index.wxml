@@ -64,7 +64,7 @@
   </view>
 
   <!-- 费用说明 -->
-  <view class="费用-info card">
+  <view class="fee-info card">
     <view class="section-title">费用说明</view>
     <view class="fee-section">
       <text class="fee-label">费用包含：</text>

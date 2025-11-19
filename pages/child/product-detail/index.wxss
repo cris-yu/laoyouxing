@@ -65,7 +65,7 @@
 
 .elderly-info,
 .itinerary,
-.费用-info,
+.fee-info,
 .ai-advisor {
   margin: 0 20rpx 20rpx;
 }
