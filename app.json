@@ -23,9 +23,6 @@
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于行程导航和求助功能"
-    },
-    "scope.record": {
-      "desc": "您的麦克风权限将用于AI语音问答功能"
     }
   },
   "sitemapLocation": "sitemap.json",
