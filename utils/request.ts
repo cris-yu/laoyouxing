@@ -1,6 +1,9 @@
 import { API_BASE_URL } from '../constants/index';
 import { ApiResponse } from '../types/index';
 
+// 开发模式：不发送真实网络请求
+const DEV_MODE = true;
+
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
   data?: any;
@@ -23,6 +26,16 @@ export function request<T = any>(
   } = options;
 
   return new Promise((resolve, reject) => {
+    // 开发模式：直接返回模拟数据
+    if (DEV_MODE) {
+      resolve({
+        code: 0,
+        message: 'success',
+        data: {} as T,
+      });
+      return;
+    }
+
     // 获取token
     let token = '';
     if (needAuth) {
