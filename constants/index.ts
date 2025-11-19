@@ -1,7 +1,8 @@
 /**
  * API 基础配置
+ * 开发环境使用微信官方测试域名，生产环境需要配置为实际后端地址
  */
-export const API_BASE_URL = 'https://api.laoyouxing.com';
+export const API_BASE_URL = 'https://servicewechat.com'; // 临时使用，请替换为实际后端地址
 
 /**
  * 存储键名常量
